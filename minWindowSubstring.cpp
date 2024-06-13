@@ -43,6 +43,7 @@ string minWindow(string s, string t) {
     
 
     int len = r - l;
+    int start = l;
     while (r <= s.size()) {
         if (need.find(s[l]) == need.end()) {
             l++;
@@ -59,7 +60,7 @@ string minWindow(string s, string t) {
                 r++;
             }
             if (r == s.size()) {
-                return s.substr(l, r - l);;
+                return s.substr(start, len);
             }
             r++;
             l++;
@@ -67,10 +68,11 @@ string minWindow(string s, string t) {
         }
         if (r - l < len) {
             len = r - l;
+            start = l;
         }
     }
 
-    return s.substr(l, r - l);
+    return s.substr(start, len);
 }
 
 int main() {
